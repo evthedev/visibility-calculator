@@ -1,4 +1,4 @@
-id,date,engine,searchTerm,ranking
+date,engine,searchTerm,ranking
 2020-01-01,apples,42.5
 2020-01-01,oranges,58
 2020-01-01,bananas,13.7

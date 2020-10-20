@@ -40,6 +40,7 @@ class RankingsController extends Controller
         
         $records = collect(iterator_to_array(Statement::create()->process($reader)));
         $output = [];
+        $i = -1;
 
         foreach ($records as $record) {
             $date = $record['date'];
@@ -72,6 +73,8 @@ class RankingsController extends Controller
             // Write to file
             Storage::put('/export/exported-rankings.csv', '');
             $writer = Writer::createFromPath(storage_path('app/public/export/exported-rankings.csv', 'w+'));
+            // @TODO add id into output table
+            array_shift($header);
             $writer->insertOne($header);
             $writer->insertAll(collect($output)->unique()->all());
 
