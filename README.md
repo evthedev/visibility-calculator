@@ -14,3 +14,6 @@ $ phpunit
 * There will be only one ranking for a specific term and engine on a specific date
 * Search terms of different cases will be treated as unique terms
 * No special handling of extra large files included, so depending on the import file size and php memory limit, the operation may timeout.
+
+## Areas of improvement
+* Add id column to output file
