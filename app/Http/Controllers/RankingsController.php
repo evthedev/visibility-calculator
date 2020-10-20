@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\RankingsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
 use League\Csv\Statement;
 use League\Csv\Reader;
@@ -68,10 +69,8 @@ class RankingsController extends Controller
         }
 
         try {
-            // Clear export file
-            file_put_contents(storage_path('app/public/export/exported-rankings.csv'), '');
-
             // Write to file
+            Storage::put('/export/exported-rankings.csv', '');
             $writer = Writer::createFromPath(storage_path('app/public/export/exported-rankings.csv', 'w+'));
             $writer->insertOne($header);
             $writer->insertAll(collect($output)->unique()->all());
