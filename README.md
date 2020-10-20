@@ -4,6 +4,8 @@
 $ git clone https://github.com/evthedev/visibility-calculator.git
 $ cd visibility-calculator
 $ composer install
+$ cp .env.example .env
+$ php artisan key:generate
 $ php artisan serve
 $ phpunit
 ```
