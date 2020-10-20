@@ -73,9 +73,9 @@ class RankingsController extends Controller
             // Write to file
             Storage::put('/export/exported-rankings.csv', '');
             $writer = Writer::createFromPath(storage_path('app/public/export/exported-rankings.csv', 'w+'));
-            // @TODO add id into output table
-            array_shift($header);
-            $writer->insertOne($header);
+            // @TODO add id into output headers
+            $outputHeaders = ['date', 'searchTerm', 'visibility'];
+            $writer->insertOne($outputHeaders);
             $writer->insertAll(collect($output)->unique()->all());
 
         } catch (CannotInsertRecord $e) {
